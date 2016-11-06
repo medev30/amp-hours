@@ -18,5 +18,5 @@ app.use(function(req, res, next) {
 app.use(express.static('public'));
 
 app.listen(PORT, function() {
-    console.log('Mead - React. Express server is running on 3000.');
+    console.log('AMS - hours. Express server is running on 3000.');
 });
