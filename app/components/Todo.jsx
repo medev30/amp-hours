@@ -1,6 +1,7 @@
 var React = require('react');
-var moment = require('moment');
+var Hours = require('HoursAPI').getHours();
 
+console.log(Hours);
 var Todo = React.createClass({
 
     getInitialState: function() {
@@ -31,7 +32,7 @@ var Todo = React.createClass({
                 <td>Dylan Edge</td>
                 <td>5</td>
                 <td>0.20</td>
-                <td><input size="4" onChange={this.onChange}/></td>
+                <td><input size="4" onChange={this.onChange} value={Hours[0].mon_rec}/></td>
                 <td><input size="4"/></td>
                 <td><input size="4"/></td>
                 <td><input size="4"/></td>
