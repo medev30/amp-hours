@@ -1,6 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var {Route, Router, IndexRoute, hashHistory, browserHistory} = require('react-router');
+
+// var {Route, Router, IndexRoute, hashHistory, browserHistory} = require('react-router');
 // import {Route, Router, IndexRoute, hashHistory, browserHistory} from 'react-router';
 
 var _Root = require('_Root');
