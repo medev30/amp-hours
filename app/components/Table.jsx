@@ -1,29 +1,33 @@
 var React = require('react');
-var ListItem = require('ListItem');
+var Row = require('Row');
 var HoursAPI = require('HoursAPI');
 
 
 
-var List = React.createClass({
-    render: function() {
-        return (
-            <div>
-                {this.renderTable()}
-            </div>
-        );
+var Table = React.createClass({
+    getInitialState: function () {
+      return {
+         table: HoursAPI.getHours()
+      };
+    },
+
+    onChange: function(i, input, val) {
+      var updatedTable = this.state.table;
+      updatedTable[i][input] = val;
+
+      this.setState({ table: updatedTable });
     },
 
     renderTable: function () {
-        var hours = HoursAPI.getHours();
 
-        var renderList = hours.map( (item, index) => {
-            return <ListItem key={index} {...item}/>;
+        var renderRows = this.state.table.map( (row, index) => {
+            return <Row key={index} index={index} {...row} onChange={this.onChange}/>;
         });
 
         return (
             <table>
               <thead>
-                <tr>
+                <tr className='row'>
                   <th>Name</th>
                   <th colSpan='3'>Monday</th>
                   <th colSpan='3'>Tuesday</th>
@@ -32,9 +36,10 @@ var List = React.createClass({
                   <th colSpan='3'>Friday</th>
                   <th colSpan='3'>Saturday</th>
                   <th colSpan='3'>Sunday</th>
+                  <th colSpan='3'>Total</th>
                 </tr>
-                <tr>
-                  <td></td>
+                <tr className='row'>
+                  <td>as</td>
                   <td>Hrs</td>
                   <td>Bon</td>
                   <td>Rec</td>
@@ -53,22 +58,31 @@ var List = React.createClass({
                   <td>Hrs</td>
                   <td>Bon</td>
                   <td>Rec</td>
+                  <td>Hrs</td>
+                  <td>Bon</td>
+                  <td>Rec</td>
+                  {/*--- Total --- */}
                   <td>Hrs</td>
                   <td>Bon</td>
                   <td>Rec</td>
                 </tr>
               </thead>
               <tbody>
-                {renderList}
+                {renderRows}
 
               </tbody>
             </table>
         );
+    },
+
+    render: function() {
+        return (
+            <div>
+                {this.renderTable()}
+            </div>
+        );
     }
-
-
-// console.log('render', props);
 
 });
 
-module.exports = List;
+module.exports = Table;

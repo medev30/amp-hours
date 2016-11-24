@@ -1,7 +1,7 @@
 var React = require('react');
 
-var List = require('List');
-var ListItem = require('ListItem');
+var Table = require('Table');
+var Row = require('Row');
 var HoursAPI = require('HoursAPI');
 
 // import React from 'react'
@@ -9,7 +9,7 @@ var HoursAPI = require('HoursAPI');
 function _Root () {
     return (
         <div>
-            <List />
+            <Table />
         </div>
     )
 
